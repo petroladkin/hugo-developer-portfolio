@@ -4,23 +4,37 @@
 
 
     <div class="uk-grid-small uk-child-width-1-4@m uk-text-center uk-flex-center uk-margin-medium-bottom" uk-grid>
+    {{ if .Site.Params.footer.email }}
       <div class="uk-margin-small-bottom">
         <h5 class="uk-margin-small-bottom">Email</h5>
         <a href="mailto:{{.Site.Params.footer.email}}">{{.Site.Params.footer.email}}</a>
-
       </div>
-      <div>
-        <h5 class="uk-margin-small-bottom">Address</h5>
-                  <div uk-lightbox>
-                    <a href="{{.Site.Params.footer.googlemaps}}" data-caption="{{.Site.Params.footer.address}}"
-                      data-type="iframe">{{.Site.Params.footer.address}}</a>
+    {{ end }}
+
+    {{if .Site.Params.footer.messengers.enable}}
+      <div class="uk-margin-small-bottom">
+        <h5 class="uk-margin-small-bottom">Messengers</h5>
+        {{ if .Site.Params.footer.messengers.skype }}
+          <a href="skype:{{.Site.Params.footer.messengers.skype}}"><img src="/icons/Skype.png" alt="Skype" width="32px" height="32px"/></a>
+        {{ end }} {{ if .Site.Params.footer.messengers.whatsapp }}
+          <a href="https://wa.me/{{.Site.Params.footer.messengers.whatsapp}}"><img src="/icons/WhatsApp.png" alt="WhatsApp" width="32px" height="32px"/></a>
+        {{ end }} {{ if .Site.Params.footer.messengers.telegram }}
+          <a href="tg://resolve?domain={{.Site.Params.footer.messengers.telegram}}"><img src="/icons/Telegram.png" alt="Telegram" width="32px" height="32px" /></a>
+        {{ end }} {{ if .Site.Params.footer.messengers.viber }}
+          <a href="viber://chat/?number=%2B{{.Site.Params.footer.messengers.viber}}"><img src="/icons/Viber.png" alt="Viber" width="32px" height="32px"/></a>
+        {{ end }}
       </div>
+    {{end}}
+
+    {{ if .Site.Params.footer.phone }}
+      <div class="uk-margin-small-bottom">
+        <h5 class="uk-margin-small-bottom">Phone</h5>
+        <a href="tel:{{.Site.Params.footer.phone}}">{{.Site.Params.footer.phone}}</a>
       </div>
+    {{ end }}
 
-    </div>
-
-
-
+  </div>
+    
 
 
   <div class="footer-copyright uk-text-center" style="padding-bottom: 1rem">
@@ -28,7 +42,7 @@
   width: 1.2em;" alt="Creative Commons">
     <img loading="lazy" src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1.2em;
   width: 1.2em;" alt="CC-BY">
-    2020
+    2021
     {{.Site.Params.Author}}
 
 
